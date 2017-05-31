@@ -3,21 +3,27 @@ package com.pantasoft.designpatterns.factorymethod;
 /**
  * Created by massimo.caracci on 30/05/2017.
  */
+enum ShapeType {
+    CIRCLE, RECTANGLE, SQUARE
+}
+
 public class ShapeFactory {
 
-    public Shape getShape(String shapeType) {
-        if (shapeType == null) {
-            return null;
-        }
-        if (shapeType.equalsIgnoreCase("CIRCLE")) {
-            return new Circle();
+    public Shape getShape(ShapeType shapeType) {
+        switch (shapeType) {
+            case CIRCLE:
+                return new Circle();
 
-        } else if (shapeType.equalsIgnoreCase("RECTANGLE")) {
-            return new Rectangle();
+            case RECTANGLE:
+                return new Rectangle();
 
-        } else if (shapeType.equalsIgnoreCase("SQUARE")) {
-            return new Square();
+            case SQUARE:
+                return new Square();
+
+            default:
+                break;
         }
         return null;
     }
 }
+

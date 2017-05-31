@@ -20,14 +20,14 @@ public class ShapeFactoryTest {
 
     @Test
     public void testShapeTypeCIRCLE() {
-        Shape shape = shapeFactory.getShape("CIRCLE");
+        Shape shape = shapeFactory.getShape(ShapeType.CIRCLE);
         assertThat(shape, instanceOf(Circle.class));
         assertEquals("Draw a Circle.",shape.draw());
     }
 
     @Test
     public void testShapeTypeRECTANGLE() {
-        Shape shape = shapeFactory.getShape("RECTANGLE");
+        Shape shape = shapeFactory.getShape(ShapeType.RECTANGLE);
 
         assertThat(shape, instanceOf(Rectangle.class));
         assertEquals("Draw a Rectangle.",shape.draw());
@@ -35,7 +35,7 @@ public class ShapeFactoryTest {
 
     @Test
     public void testShapeTypeSQUARE() {
-        Shape shape = shapeFactory.getShape("SQUARE");
+        Shape shape = shapeFactory.getShape(ShapeType.SQUARE);
 
         assertThat(shape, instanceOf(Square.class));
         assertEquals("Draw a Square.",shape.draw());
