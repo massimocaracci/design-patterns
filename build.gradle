@@ -1,7 +1,9 @@
-group 'com.pantasoft'
-version '1.0-SNAPSHOT'
+plugins {
+    id 'java'
+}
 
-apply plugin: 'java'
+group 'uk.co.pantasoft'
+version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.10
 
