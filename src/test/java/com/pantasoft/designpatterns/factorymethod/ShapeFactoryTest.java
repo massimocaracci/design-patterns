@@ -1,43 +1,18 @@
 package com.pantasoft.designpatterns.factorymethod;
 
-import static org.junit.Assert.*;
-
-import com.pantasoft.designpatterns.factorymethod.*;
-import org.junit.Before;
 import org.junit.Test;
-import static org.hamcrest.CoreMatchers.instanceOf;
 
-/**
- * Created by massimo.caracci on 30/05/2017.
- */
+import java.util.function.Supplier;
+
 public class ShapeFactoryTest {
-    ShapeFactory shapeFactory;
-
-    @Before
-    public void setUp(){
-        shapeFactory = new ShapeFactory();
-    }
 
     @Test
-    public void testShapeTypeCIRCLE() {
-        Shape shape = shapeFactory.getShape(ShapeType.CIRCLE);
-        assertThat(shape, instanceOf(Circle.class));
-        assertEquals("Draw a Circle.",shape.draw());
-    }
+    public void getShape() {
 
-    @Test
-    public void testShapeTypeRECTANGLE() {
-        Shape shape = shapeFactory.getShape(ShapeType.RECTANGLE);
+        Supplier<ShapeFactory> shapeFactory = ShapeFactory::new;
 
-        assertThat(shape, instanceOf(Rectangle.class));
-        assertEquals("Draw a Rectangle.",shape.draw());
-    }
+        shapeFactory.get().getShape("circle").draw();
 
-    @Test
-    public void testShapeTypeSQUARE() {
-        Shape shape = shapeFactory.getShape(ShapeType.SQUARE);
-
-        assertThat(shape, instanceOf(Square.class));
-        assertEquals("Draw a Square.",shape.draw());
+        shapeFactory.get().getShape("rectangle").draw();
     }
 }

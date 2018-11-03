@@ -1,29 +1,30 @@
 package com.pantasoft.designpatterns.factorymethod;
 
-/**
- * Created by massimo.caracci on 30/05/2017.
- */
-enum ShapeType {
-    CIRCLE, RECTANGLE, SQUARE
-}
+import com.pantasoft.designpatterns.factorymethod.impl.Circle;
+import com.pantasoft.designpatterns.factorymethod.impl.Rectangle;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
 
 public class ShapeFactory {
 
-    public Shape getShape(ShapeType shapeType) {
-        switch (shapeType) {
-            case CIRCLE:
-                return new Circle();
+    final static Map<String, Supplier<Shape>> map = new HashMap();
 
-            case RECTANGLE:
-                return new Rectangle();
+    static {
 
-            case SQUARE:
-                return new Square();
+        map.put("CIRCLE", Circle::new);
+        map.put("RECTANGLE", Rectangle::new);
+    }
 
-            default:
-                break;
+    public Shape getShape(String shapeType) {
+
+        var shape = map.get(shapeType.toUpperCase());
+
+        if (shape != null) {
+
+            return shape.get();
         }
-        return null;
+        throw new IllegalArgumentException("No such shape" + shapeType.toUpperCase());
     }
 }
-
