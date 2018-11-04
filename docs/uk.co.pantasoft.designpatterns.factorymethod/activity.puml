@@ -1,0 +1,15 @@
+@startuml
+
+
+Shape <|-- Circle
+Shape <|-- Rectangle
+
+Shape : draw();
+Circle : draw();
+Rectangle : draw();
+
+ShapeFactoryTest *-- "ShapeFactory" : ask
+ShapeFactory : +getShape(String shapeType): Shape
+
+
+@enduml

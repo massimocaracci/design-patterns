@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 
 public class ShapeFactory {
 
-    final static Map<String, Supplier<Shape>> map = new HashMap();
+    static final Map<String, Supplier<Shape>> map = new HashMap();
 
     static {
 
